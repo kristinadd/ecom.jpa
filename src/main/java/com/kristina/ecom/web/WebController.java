@@ -23,6 +23,11 @@ public class WebController {
     @Autowired
     ProductService productService;
 
+    @GetMapping("/home")
+    public String getHome() {
+        return "home";
+    }
+
     @GetMapping("/{id}")
     public String getProduct(Model model, @PathVariable int id) {
         Product product = productService.get(id);
