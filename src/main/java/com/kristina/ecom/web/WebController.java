@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -45,12 +46,19 @@ public class WebController {
         return "products";
     }
 
-    @GetMapping("/delete/{id}")
-    public String deleteProduct(Model model, @PathVariable int id) {
-        int rows = productService.delete(id);
-        model.addAttribute("product", rows);
-        return "redirect:/ecom/pms/all";
-    }
+    //  It would be better to use a POST or DELETE request for this operation.
+    // @GetMapping("/delete/{id}")
+    // public String deleteProduct(Model model, @PathVariable int id) {
+    //     int rows = productService.delete(id);
+    //     model.addAttribute("product", rows);
+    //     return "redirect:/ecom/pms/all";
+    // }
+
+    @DeleteMapping("/delete/{id}")  // or @PostMapping if DELETE isn't supported
+    public String deleteProduct(@PathVariable int id) {
+    productService.delete(id);
+    return "redirect:/ecom/pms/all";
+}
 
     @GetMapping("/create")
     public String showProductForm(Model model) {
