@@ -36,6 +36,18 @@ public class ProductService {
     return products;
   }
 
+
+// Finish this flow 
+  public List<String> getAllTypes() {
+    List<String> types = new ArrayList<>();
+    try {
+      types = dao.getTypes();
+    } catch (DAOException ex) {
+      ex.printStackTrace();
+    }
+    return types;
+  }
+
   // this needs a fix, it shoudn't read from db
   public Product getComputer() {
     Product product = null;

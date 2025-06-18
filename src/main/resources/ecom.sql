@@ -34,15 +34,15 @@ CREATE TABLE if NOT EXISTS orderDetails (
 INSERT INTO type VALUES("Computer");
 INSERT INTO type VALUES("Component");
 
-INSERT INTO product(type, name, price, quantity, image) VALUES("Computer", "Default Computer" ,700.0, 10, "images/computer.jpg");
-INSERT INTO product(type, name, price, quantity, image) VALUES("Component", "Ben's Picture" ,4000.0, 10, "images/keyboard.jpg");
-INSERT INTO product(type, name, price, quantity, image) VALUES("Component", "GPU 3080 Ti", 1949.86, 10, "images/gpu.jpg");
-INSERT INTO product(type, name, price, quantity, image) VALUES("Component", "Keyboard", 89.99, 10, "images/keyboard.jpg");
-INSERT INTO product(type, name, price, quantity, image) VALUES("Component", "Microphone", 231.18, 10, "images/microphone.jpg");
-INSERT INTO product(type, name, price, quantity, image) VALUES("Component", "Monitor", 325.2, 10, "images/monitor.jpg");
-INSERT INTO product(type, name, price, quantity, image) VALUES("Component", "Mouse", 38.99, 10, "images/mouse.jpg");
-INSERT INTO product(type, name, price, quantity, image) VALUES("Component", "Speaker", 109.31, 10, "images/speaker.jpg");
-INSERT INTO product(type, name, price, quantity, image) VALUES("Component", "USB HD camera", 205.49, 10, "images/camera.jpg");
+INSERT INTO product(type, name, price, quantity, image) VALUES("Computer", "Default Computer" ,700.0, 10, "computer.jpg");
+INSERT INTO product(type, name, price, quantity, image) VALUES("Component", "Ben's Picture" ,4000.0, 10, "keyboard.png");
+INSERT INTO product(type, name, price, quantity, image) VALUES("Component", "GPU 3080 Ti", 1949.86, 10, "gpu.jpg");
+INSERT INTO product(type, name, price, quantity, image) VALUES("Component", "Keyboard", 89.99, 10, "keyboard.png");
+INSERT INTO product(type, name, price, quantity, image) VALUES("Component", "Microphone", 231.18, 10, "microphone.jpg");
+INSERT INTO product(type, name, price, quantity, image) VALUES("Component", "Monitor", 325.2, 10, "monitor.jpg");
+INSERT INTO product(type, name, price, quantity, image) VALUES("Component", "Mouse", 38.99, 10, "mouse.png");
+INSERT INTO product(type, name, price, quantity, image) VALUES("Component", "Speaker", 109.31, 10, "speaker.jpg");
+INSERT INTO product(type, name, price, quantity, image) VALUES("Component", "USB HD camera", 205.49, 10, "camera.jpg");
 
 ALTER TABLE product ADD type char(32) NOT NULL;
 UPDATE product SET type="Component" 
