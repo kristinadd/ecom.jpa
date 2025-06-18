@@ -38,7 +38,7 @@ public class ProductService {
 
 
 // Finish this flow 
-  public List<String> getAllTypes() {
+  public List<String> getTypes() {
     List<String> types = new ArrayList<>();
     try {
       types = dao.getTypes();
