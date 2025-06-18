@@ -10,9 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.kristina.ecom.domain.Product;
 import com.kristina.ecom.service.ProductService;
@@ -54,37 +51,6 @@ public class WebController {
         return "products";
     }
 
-    // @PostMapping("/delete/{id}")
-    // public String deleteProduct(@PathVariable int id, 
-    //                           RedirectAttributes redirectAttributes) {
-    //     logger.info("Delete request received for product ID: {}", id);
-        
-    //     try {
-    //         Product product = productService.get(id);
-    //         if (product == null) {
-    //             logger.warn("Delete attempt failed - Product not found. ID: {}", id);
-    //             redirectAttributes.addFlashAttribute("error", 
-    //                 "Product not found. It may have been already deleted.");
-    //             return "redirect:/ecom/pms/all";
-    //         }
-
-    //         productService.delete(id);
-            
-    //         logger.info("Product successfully deleted. ID: {}", id);
-    //         redirectAttributes.addFlashAttribute("success", 
-    //             "Product '" + product.getName() + "' has been successfully deleted.");
-            
-    //     } catch (Exception e) {
-    //         logger.error("Error deleting product ID: {}. Error: {}", 
-    //             id, e.getMessage(), e);
-            
-    //         redirectAttributes.addFlashAttribute("error", 
-    //             "An error occurred while deleting the product. Please try again later.");
-    //     }
-        
-    //     return "redirect:/ecom/pms/all";
-    // }
-
     @PostMapping("/delete/{id}")
     public String deleteProduct(@PathVariable int id) {
         productService.delete(id);
@@ -96,11 +62,10 @@ public class WebController {
         Product product = new Product();
         model.addAttribute("product", product);
 
-        model.addAttribute("types", productService.getAllTypes());
+        model.addAttribute("types", productService.getTypes());
 
         return "create";
     }
-
 
     @PostMapping("/create")
     public String createProduct(@ModelAttribute Product product) {
@@ -112,7 +77,7 @@ public class WebController {
     public String updateProduct(Model model, @PathVariable int id) {
         Product product = productService.get(id);
         model.addAttribute("product", product);
-        model.addAttribute("types", productService.getAllTypes());
+        model.addAttribute("types", productService.getTypes());
 
         return "update";
     }
