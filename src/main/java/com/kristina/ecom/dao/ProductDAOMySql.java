@@ -128,4 +128,23 @@ public class ProductDAOMySql implements DAO<Integer, Product> {
     }
     return rows;
   }
+
+  public List<String> getTypes() throws DAOException {
+    List<String> types = new ArrayList<>();
+
+    try {
+    Connection conn = datasource.getConnection();
+    String query = "SELECT DISTINCT name FROM type";
+    Statement stat = conn.createStatement();
+    ResultSet rs = stat.executeQuery(query);
+      while (rs.next()) {
+        types.add(rs.getString(1));
+      }
+
+      conn.close();
+    } catch (SQLException ex) {
+      throw new DAOException("Error in DAO", ex);
+    }
+      return types;
+  }
 }

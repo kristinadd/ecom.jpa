@@ -23,17 +23,14 @@ import org.springframework.ui.Model;
 @RequestMapping("ecom/pms")
 public class WebController {
 
-    // Field injection is not recommended. Use constructor injection instead.
-    // @Autowired
     private final ProductService productService;
 
-    // Constructor injection is recommended.
-    @Autowired
+    @Autowired // constructor injection; recommended ??
     public WebController(ProductService productService) {
         this.productService = productService;
     }
 
-    private static final Logger logger = LoggerFactory.getLogger(WebController.class);
+    // private static final Logger logger = LoggerFactory.getLogger(WebController.class);
 
     @GetMapping("/home")
     public String getHome() {
@@ -57,34 +54,40 @@ public class WebController {
         return "products";
     }
 
-    @PostMapping("/delete/{id}")
-    public String deleteProduct(@PathVariable int id, 
-                              RedirectAttributes redirectAttributes) {
-        logger.info("Delete request received for product ID: {}", id);
+    // @PostMapping("/delete/{id}")
+    // public String deleteProduct(@PathVariable int id, 
+    //                           RedirectAttributes redirectAttributes) {
+    //     logger.info("Delete request received for product ID: {}", id);
         
-        try {
-            Product product = productService.get(id);
-            if (product == null) {
-                logger.warn("Delete attempt failed - Product not found. ID: {}", id);
-                redirectAttributes.addFlashAttribute("error", 
-                    "Product not found. It may have been already deleted.");
-                return "redirect:/ecom/pms/all";
-            }
+    //     try {
+    //         Product product = productService.get(id);
+    //         if (product == null) {
+    //             logger.warn("Delete attempt failed - Product not found. ID: {}", id);
+    //             redirectAttributes.addFlashAttribute("error", 
+    //                 "Product not found. It may have been already deleted.");
+    //             return "redirect:/ecom/pms/all";
+    //         }
 
-            productService.delete(id);
+    //         productService.delete(id);
             
-            logger.info("Product successfully deleted. ID: {}", id);
-            redirectAttributes.addFlashAttribute("success", 
-                "Product '" + product.getName() + "' has been successfully deleted.");
+    //         logger.info("Product successfully deleted. ID: {}", id);
+    //         redirectAttributes.addFlashAttribute("success", 
+    //             "Product '" + product.getName() + "' has been successfully deleted.");
             
-        } catch (Exception e) {
-            logger.error("Error deleting product ID: {}. Error: {}", 
-                id, e.getMessage(), e);
+    //     } catch (Exception e) {
+    //         logger.error("Error deleting product ID: {}. Error: {}", 
+    //             id, e.getMessage(), e);
             
-            redirectAttributes.addFlashAttribute("error", 
-                "An error occurred while deleting the product. Please try again later.");
-        }
+    //         redirectAttributes.addFlashAttribute("error", 
+    //             "An error occurred while deleting the product. Please try again later.");
+    //     }
         
+    //     return "redirect:/ecom/pms/all";
+    // }
+
+    @PostMapping("/delete/{id}")
+    public String deleteProduct(@PathVariable int id) {
+        productService.delete(id);
         return "redirect:/ecom/pms/all";
     }
 
@@ -92,6 +95,8 @@ public class WebController {
     public String showProductForm(Model model) {
         Product product = new Product();
         model.addAttribute("product", product);
+
+        model.addAttribute("types", productService.getAllTypes());
 
         return "create";
     }
@@ -107,6 +112,7 @@ public class WebController {
     public String updateProduct(Model model, @PathVariable int id) {
         Product product = productService.get(id);
         model.addAttribute("product", product);
+        model.addAttribute("types", productService.getAllTypes());
 
         return "update";
     }
