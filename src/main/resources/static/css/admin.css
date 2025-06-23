@@ -1,0 +1,141 @@
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #f8fafc;
+}
+
+.admin-header {
+    background: #1e293b;
+    color: white;
+    padding: 1.5rem 0;
+    margin-bottom: 2rem;
+}
+
+.admin-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.admin-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.stats-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2563eb;
+}
+
+.stat-label {
+    color: #64748b;
+    font-size: 0.875rem;
+}
+
+.toolbar {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.table-container {
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.table thead th {
+    background: #f8fafc;
+    border-top: none;
+    color: #1e293b;
+    font-weight: 600;
+}
+
+.product-image {
+    width: 40px;
+    height: 40px;
+    background: #f1f5f9;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2563eb;
+}
+
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.status-in-stock {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.status-out-stock {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.status-low-stock {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.btn-admin {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.btn-admin:hover {
+    background: #1d4ed8;
+    color: white;
+}
+
+.action-btn {
+    padding: 0.25rem 0.5rem;
+    border: none;
+    border-radius: 4px;
+    margin: 0 0.125rem;
+    font-size: 0.875rem;
+}
+
+.btn-view {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.btn-edit {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.btn-delete {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    color: #64748b;
+} 
