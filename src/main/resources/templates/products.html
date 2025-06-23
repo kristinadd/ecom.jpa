@@ -45,8 +45,10 @@
                         <tr th:each="product : ${products}">
                             <td>
                                 <div class="product-image">
-                                    <i th:class="${product.type == 'Computer' ? 'bi bi-laptop' : 
-                                                 product.type == 'Component' ? 'bi bi-cpu' : 'bi bi-mouse'}"></i>
+                                    <img th:if="${product.img != null and product.img != ''}" 
+                                         th:src="@{'/images/' + ${product.img}}" 
+                                         th:alt="${product.name}"
+                                         style="width: 80px; height: 80px; object-fit: cover; border-radius: 6px;">
                                 </div>
                             </td>
                             <td>
