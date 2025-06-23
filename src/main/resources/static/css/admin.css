@@ -17,7 +17,7 @@ body {
 }
 
 .admin-brand {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     font-weight: 700;
 }
 
@@ -138,4 +138,144 @@ body {
     text-align: center;
     padding: 3rem;
     color: #64748b;
-} 
+}
+
+/* Home Page Styles */
+.welcome-banner {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 3rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.welcome-subtitle {
+    font-size: 1.125rem;
+    opacity: 0.9;
+    margin-bottom: 0;
+}
+
+.welcome-icon {
+    font-size: 4rem;
+    opacity: 0.8;
+}
+
+.section-title {
+    color: #1e293b;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.action-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-align: center;
+    height: 100%;
+}
+
+.action-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.action-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.action-card h5 {
+    color: #1e293b;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.action-card p {
+    color: #64748b;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.info-panel {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.info-panel h5 {
+    color: #1e293b;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.getting-started-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.getting-started-list li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #f1f5f9;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+.getting-started-list li:last-child {
+    border-bottom: none;
+}
+
+.getting-started-list i {
+    margin-top: 0.125rem;
+    flex-shrink: 0;
+}
+
+.tips-panel {
+    background: #f8fafc;
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.tips-panel h6 {
+    color: #1e293b;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.tip-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+.tip-item:last-child {
+    margin-bottom: 0;
+}
+
+.tip-item i {
+    color: #2563eb;
+    font-size: 0.75rem;
+}
