@@ -122,7 +122,8 @@ public class OrderDAOMySql implements DAO<String, Order> {
                       orderRs.getString("id"),
                       orderRs.getTimestamp("date_time").toLocalDateTime(), 
                       // TODO: get proper description from db
-                      new ArrayList<>() // TODO: get proper products from db, now it's empty list 
+                      new ArrayList<>() // TODO: get proper products from db, now it's empty list
+                      
                   );
               }
               // first create the list of products and then create the order and pass the list of product 
