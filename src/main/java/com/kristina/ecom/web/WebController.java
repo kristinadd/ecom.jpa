@@ -17,7 +17,7 @@ import com.kristina.ecom.service.ProductService;
 import org.springframework.ui.Model;
 
 @Controller
-@RequestMapping("ecom/pms")
+@RequestMapping("ecom/admin")
 public class WebController {
 
     private final ProductService productService;
@@ -29,19 +29,19 @@ public class WebController {
 
     // private static final Logger logger = LoggerFactory.getLogger(WebController.class);
 
-    @GetMapping("/home")
+    @GetMapping("/")
     public String getHome() {
         return "home";
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/pms/{id}")
     public String getProduct(Model model, @PathVariable int id) {
         Product product = productService.get(id);
         model.addAttribute("product", product);
         return "product";
     }
 
-    @GetMapping("/all")
+    @GetMapping("/pms/all")
     public String getAllProducts(Model model) {
         List<Product> products = new ArrayList<>();
 
@@ -51,13 +51,13 @@ public class WebController {
         return "products";
     }
 
-    @PostMapping("/delete/{id}")
+    @PostMapping("/pms/delete/{id}")
     public String deleteProduct(@PathVariable int id) {
         productService.delete(id);
-        return "redirect:/ecom/pms/all";
+        return "redirect:/ecom/admin/pms/all";
     }
 
-    @GetMapping("/create")
+    @GetMapping("/pms/create")
     public String showProductForm(Model model) {
         Product product = new Product();
         model.addAttribute("product", product);
@@ -67,13 +67,13 @@ public class WebController {
         return "create";
     }
 
-    @PostMapping("/create")
+    @PostMapping("/pms/create")
     public String createProduct(@ModelAttribute Product product) {
         productService.create(product);
-        return "redirect:/ecom/pms/all";
+        return "redirect:/ecom/admin/pms/all";
     }
 
-    @GetMapping("/update/{id}")
+    @GetMapping("/pms/update/{id}")
     public String updateProduct(Model model, @PathVariable int id) {
         Product product = productService.get(id);
         model.addAttribute("product", product);
@@ -82,11 +82,11 @@ public class WebController {
         return "update";
     }
 
-    @PostMapping("/update/{id}")
+    @PostMapping("/pms/update/{id}")
     public String saveProduct(@ModelAttribute Product product, @PathVariable int id) {
         product.setId(id);
         productService.update(product);
 
-        return "redirect:/ecom/pms/all";
+        return "redirect:/ecom/admin/pms/all";
     }
 }

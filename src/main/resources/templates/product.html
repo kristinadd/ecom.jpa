@@ -10,16 +10,16 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-8">
-                                         <a href="/ecom/pms/home" class="admin-brand" style="text-decoration: none; color: inherit;">
+                                         <a href="/ecom/admin/" class="admin-brand" style="text-decoration: none; color: inherit;">
                          <i class="bi bi-shield-check me-2"></i>
                          Admin Console
                      </a>
                 </div>
                 <div class="col-md-4 text-end">
-                    <a href="/ecom/pms/all" class="btn btn-outline-light me-2">
+                    <a href="/ecom/admin/pms/all" class="btn btn-outline-light me-2">
                         <i class="bi bi-box-seam"></i> Products
                     </a>
-                    <a href="/ecom/pms/create" class="btn btn-admin">
+                    <a href="/ecom/admin/pms/create" class="btn btn-admin">
                         <i class="bi bi-plus-circle"></i> Add Product
                     </a>
                 </div>
@@ -122,7 +122,7 @@
                             </h5>
                         </div>
                         <div class="card-body d-grid gap-2">
-                            <a th:href="@{/ecom/pms/update/{id}(id=${product.id})}" 
+                            <a th:href="@{update/{id}(id=${product.id})}" 
                                class="btn btn-warning">
                                 <i class="bi bi-pencil"></i> Edit Product
                             </a>
@@ -134,7 +134,7 @@
                                 <i class="bi bi-trash"></i> Delete Product
                             </button>
                             
-                            <a th:href="@{/ecom/pms/all}" class="btn btn-secondary">
+                            <a th:href="@{all}" class="btn btn-secondary">
                                 <i class="bi bi-list"></i> View All Products
                             </a>
                         </div>
@@ -166,7 +166,7 @@
                     <i class="bi bi-exclamation-triangle text-warning" style="font-size: 4rem;"></i>
                     <h3 class="mt-3">Product Not Found</h3>
                     <p class="text-muted">The product you're looking for doesn't exist or has been removed.</p>
-                    <a th:href="@{/ecom/pms/all}" class="btn btn-primary">
+                    <a th:href="@{all}" class="btn btn-primary">
                         <i class="bi bi-arrow-left"></i> Back to Products
                     </a>
                 </div>
@@ -194,7 +194,7 @@
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         <i class="bi bi-x"></i> Cancel
                     </button>
-                    <form th:action="@{/ecom/pms/delete/{id}(id=${product != null ? product.id : 0})}" 
+                    <form th:action="@{delete/{id}(id=${product != null ? product.id : 0})}" 
                           method="POST" style="display: inline;">
                         <button type="submit" class="btn btn-danger">
                             <i class="bi bi-trash"></i> Delete Product
