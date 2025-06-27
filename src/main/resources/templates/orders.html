@@ -15,11 +15,6 @@
                         Admin Console
                     </a>
                 </div>
-                <div class="col-md-4 text-end">
-                    <a href="/ecom/admin/" class="btn btn-admin">
-                        <i class="bi bi-arrow-left"></i> Back to Admin
-                    </a>
-                </div>
             </div>
         </div>
     </div>
@@ -27,7 +22,7 @@
     <!-- Main Content -->
     <div class="container">
         <!-- Orders Table -->
-        <div class="table-container">
+        <div class="table-container orders-table-container">
             <!-- Table with Orders -->
             <div th:if="${orders.size() > 0}">
                 <table class="table table-hover mb-0">
