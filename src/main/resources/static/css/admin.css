@@ -157,6 +157,14 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.welcome-banner-oms {
+    background: linear-gradient(135deg, #2E8B57 0%, #20B2AA 100%);
+    color: white;
+    padding: 3rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 .welcome-title {
     font-size: 2.25rem;
     font-weight: 700;
