@@ -10,7 +10,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-8">
-                    <a href="/ecom/pms/home" class="admin-brand" style="text-decoration: none; color: inherit;">
+                    <a href="/ecom/admin/" class="admin-brand" style="text-decoration: none; color: inherit;">
                         <i class="bi bi-shield-check me-2"></i>
                         Admin Console
                     </a>
@@ -34,6 +34,7 @@
                     <thead>
                         <tr>
                             <th>Image</th>
+                            <th>ID</th>
                             <th>Product Name</th>
                             <th>Type</th>
                             <th>Price</th>
@@ -52,8 +53,11 @@
                                 </div>
                             </td>
                             <td>
+                                <span th:text="${product.id}"></span>
+                            </td>
+                            <td>
                                 <div class="fw-semibold" th:text="${product.name}">Product Name</div>
-                                <small class="text-muted">ID: <span th:text="${product.id}">1</span></small>
+                                <!-- <small class="text-muted">ID: <span th:text="${product.id}">1</span></small> -->
                             </td>
                             <td>
                                 <span class="badge bg-secondary" th:text="${product.type}">Type</span>
@@ -104,7 +108,7 @@
                 // Create and submit a form to delete the product
                 const form = document.createElement('form');
                 form.method = 'POST';
-                form.action = `/ecom/pms/delete/${id}`;
+                form.action = `delete/${id}`;
                 document.body.appendChild(form);
                 form.submit();
             }

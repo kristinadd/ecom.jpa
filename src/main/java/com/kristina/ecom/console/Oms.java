@@ -87,6 +87,8 @@ public class Oms {
     System.out.print("Which order would you like to read: ");
     String id = sc.next();
     System.out.println(service.get(id));
+    System.out.println("Products: ");
+    System.out.println(service.get(id).getProducts());
   }
 
   public void delete() {

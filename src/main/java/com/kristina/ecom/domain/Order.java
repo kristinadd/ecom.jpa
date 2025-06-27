@@ -60,6 +60,7 @@ public class Order {
   //   this.date = date;
   //   this.products = products;
   // }
+  
 
   public String getId() {
     return id;
@@ -104,6 +105,7 @@ public class Order {
   @Override
   public String toString() {
     return String.format("OrderID@%s: %s $%.2f", this.id, computer.getDescription(), computer.getPrice());
+    // this toString is not correct 
   }
 
   private static String getID() {

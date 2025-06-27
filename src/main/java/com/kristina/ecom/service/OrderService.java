@@ -2,6 +2,9 @@ package com.kristina.ecom.service;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;
+
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 
 import com.kristina.ecom.dao.DAO;
@@ -11,6 +14,7 @@ import com.kristina.ecom.domain.ComputerBase;
 import com.kristina.ecom.domain.Order;
 import com.kristina.ecom.domain.Product;
 
+@Component
 public class OrderService {
   private DAO<String, Order> dao; // interface
   private DAO<Integer, Product> daoP;

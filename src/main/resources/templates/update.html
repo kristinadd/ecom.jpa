@@ -10,7 +10,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-8">
-                                         <a href="/ecom/pms/home" class="admin-brand" style="text-decoration: none; color: inherit;">
+                                         <a href="/ecom/admin/" class="admin-brand" style="text-decoration: none; color: inherit;">
                          <i class="bi bi-shield-check me-2"></i>
                          Admin Console
                      </a>
@@ -152,12 +152,12 @@
                                         <button type="submit" class="btn btn-warning">
                                             <i class="bi bi-check-circle"></i> Update Product
                                         </button>
-                                        <a th:href="@{/ecom/pms/{id}(id=${product.id})}" class="btn btn-secondary">
+                                        <a th:href="@{../{id}(id=${product.id})}" class="btn btn-secondary">
                                             <i class="bi bi-eye"></i> View Product
                                         </a>
                                     </div>
                                     <div>
-                                        <a th:href="@{/ecom/pms/all}" class="btn btn-outline-secondary">
+                                        <a th:href="@{../all}" class="btn btn-outline-secondary">
                                             <i class="bi bi-arrow-left"></i> Back to Products
                                         </a>
                                     </div>
