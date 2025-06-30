@@ -12,6 +12,7 @@ public class Order {
   private String id;
   private LocalDateTime date;
   private Computer computer;
+  private String description;
 
   public Order() {}
   
@@ -29,38 +30,13 @@ public class Order {
     this.computer = computer;
   }
 
-  public Order(String id, LocalDateTime date, List<Product> products) {
+  public Order(String id, LocalDateTime date, List<Product> products, String description) {
     this.id = id;
     this.date = date;
     this.computer = new ComputerBase(products);
+    this.description = description;
   }
 
-  //   public Order(Computer computer) {
-  //     this( // constructor chainnig
-  //     getID(),
-  //     computer.getDescription(), 
-  //     (float) computer.getPrice(), 
-  //     LocalDateTime.now(),
-  //     computer.getComponents()
-  //     );
-  // }
-  
-  // public Order(String id, String description, float total, LocalDateTime date, List<Product> products) {
-  //   this.id = id;
-  //   this.description = description;
-  //   this.total = total;
-  //   this.date = date;
-  //   this.products= products;
-  // }
-
-  // public Order(String description, float total, LocalDateTime date, List<Product> products) {
-  //   this.id = "";
-  //   this.description = description;
-  //   this.total = total;
-  //   this.date = date;
-  //   this.products = products;
-  // }
-  
 
   public String getId() {
     return id;
@@ -70,9 +46,15 @@ public class Order {
     this.id = id;
   }
 
+  // public String getDescription() {
+  //   return computer.getDescription();
+  // }
+
   public String getDescription() {
-    return computer.getDescription();
+    return description;
   }
+
+  // if i create an order and i don't pass it the description , I think the description gets set to null
 
   public void update() {
     this.setDate(LocalDateTime.now());
@@ -104,8 +86,7 @@ public class Order {
 
   @Override
   public String toString() {
-    return String.format("OrderID@%s: %s $%.2f", this.id, computer.getDescription(), computer.getPrice());
-    // this toString is not correct 
+    return String.format("OrderID@%s: %s", this.id, this.description);
   }
 
   private static String getID() {
