@@ -46,9 +46,15 @@ public class Order {
     this.id = id;
   }
 
+  // public String getDescription() {
+  //   return computer.getDescription();
+  // }
+
   public String getDescription() {
-    return computer.getDescription();
+    return description;
   }
+
+  // if i create an order and i don't pass it the description , I think the description gets set to null
 
   public void update() {
     this.setDate(LocalDateTime.now());
@@ -81,7 +87,6 @@ public class Order {
   @Override
   public String toString() {
     return String.format("OrderID@%s: %s", this.id, this.description);
-    // this toString is not correct 
   }
 
   private static String getID() {
