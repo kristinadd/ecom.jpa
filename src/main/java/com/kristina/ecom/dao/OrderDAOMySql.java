@@ -89,7 +89,8 @@ public class OrderDAOMySql implements DAO<String, Order> {
       while (rs.next()) {
         Order order = new Order(rs.getString(1), 
                                 rs.getTimestamp(4).toLocalDateTime(),
-                                 new ArrayList<Product>()
+                                 new ArrayList<Product>(),
+                                 rs.getString(2)
                               );
         orders.add(order);
       }
@@ -121,9 +122,8 @@ public class OrderDAOMySql implements DAO<String, Order> {
                   order = new Order(
                       orderRs.getString("id"),
                       orderRs.getTimestamp("date_time").toLocalDateTime(), 
-                      // TODO: get proper description from db
-                      new ArrayList<>() // TODO: get proper products from db, now it's empty list
-                      
+                      new ArrayList<>(),
+                      orderRs.getString("description")
                   );
               }
               // first create the list of products and then create the order and pass the list of product 
@@ -212,7 +212,7 @@ public class OrderDAOMySql implements DAO<String, Order> {
     Connection conn = datasource.getConnection();
     conn.setAutoCommit(false); // using multiple queries
 
-    // Update order in order table table
+    // Update order in order table
     PreparedStatement stat = conn.prepareStatement(orderQuery);
     stat.setString(1,order.getDescription());
     stat.setFloat(2, (float) order.getTotal());
