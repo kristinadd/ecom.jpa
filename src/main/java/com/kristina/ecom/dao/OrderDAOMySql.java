@@ -90,7 +90,8 @@ public class OrderDAOMySql implements DAO<String, Order> {
         Order order = new Order(rs.getString(1), 
                                 rs.getTimestamp(4).toLocalDateTime(),
                                  new ArrayList<Product>(),
-                                 rs.getString(2)
+                                 rs.getString(2),
+                                 rs.getDouble(3)
                               );
         orders.add(order);
       }
@@ -123,7 +124,8 @@ public class OrderDAOMySql implements DAO<String, Order> {
                       orderRs.getString("id"),
                       orderRs.getTimestamp("date_time").toLocalDateTime(), 
                       new ArrayList<>(),
-                      orderRs.getString("description")
+                      orderRs.getString("description"),
+                      orderRs.getDouble("total")
                   );
               }
               // first create the list of products and then create the order and pass the list of product 

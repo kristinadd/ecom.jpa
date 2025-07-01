@@ -13,6 +13,7 @@ public class Order {
   private LocalDateTime date;
   private Computer computer;
   private String description;
+  private double total;
 
   public Order() {}
   
@@ -30,11 +31,12 @@ public class Order {
     this.computer = computer;
   }
 
-  public Order(String id, LocalDateTime date, List<Product> products, String description) {
+  public Order(String id, LocalDateTime date, List<Product> products, String description, double total) {
     this.id = id;
     this.date = date;
     this.computer = new ComputerBase(products);
     this.description = description;
+    this.total = total;
   }
 
 
@@ -54,14 +56,16 @@ public class Order {
     return description;
   }
 
-  // if i create an order and i don't pass it the description , I think the description gets set to null
-
   public void update() {
     this.setDate(LocalDateTime.now());
   }
 
+  // public double getTotal() {
+  //   return computer.getPrice();
+  // }
+
   public double getTotal() {
-    return computer.getPrice();
+    return total;
   }
 
   public LocalDateTime getDate() {
@@ -86,7 +90,7 @@ public class Order {
 
   @Override
   public String toString() {
-    return String.format("OrderID@%s: %s", this.id, this.description);
+    return String.format("OrderID@%s: %s $%.2f", this.id, this.description, this.total);
   }
 
   private static String getID() {
