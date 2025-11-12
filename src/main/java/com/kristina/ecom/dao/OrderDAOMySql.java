@@ -55,6 +55,7 @@ public class OrderDAOMySql implements DAO<String, Order> {
 
       stat.setString(1, order.getId());
       stat.setString(2, order.getDescription());
+      // stat.setString(2, "Test from today");
       stat.setFloat(3, (float) order.getTotal());
       stat.setTimestamp(4,  Timestamp.valueOf(order.getDate()));
       stat.executeUpdate();
@@ -74,6 +75,7 @@ public class OrderDAOMySql implements DAO<String, Order> {
       conn.commit();
       conn.close();
       } catch (SQLException ex) {
+        ex.printStackTrace();
         throw new DAOException("Error in DAO", ex);
       }
       return order;

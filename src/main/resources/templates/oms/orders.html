@@ -32,7 +32,6 @@
                             <th>Date</th>
                             <th>Description</th>
                             <th>Total</th>
-                            <th>Products</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -50,9 +49,6 @@
                             </td>
                             <td>
                                 <span class="fw-semibold">$<span th:text="${#numbers.formatDecimal(order.total, 1, 2)}">0.00</span></span>
-                            </td>
-                            <td>
-                                <span class="badge bg-info" th:text="${order.products.size()} + ' items'"></span>
                             </td>
                             <td>
                                 <a th:href="@{{id}(id=${order.id})}" class="action-btn btn-view" title="View">

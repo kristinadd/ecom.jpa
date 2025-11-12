@@ -13,28 +13,28 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.kristina.ecom.domain.Order;
 import com.kristina.ecom.service.OrderService;
+import com.kristina.ecom.service.ProductService;
 
 import org.springframework.ui.Model;
 
 @Controller
-@RequestMapping("ecom/admin/oms/")
+@RequestMapping("oms/")
 public class OmsController {
 
     private final OrderService orderService;
+    private final ProductService productService;
 
     @Autowired
-    public OmsController(OrderService orderService) {
+    public OmsController(OrderService orderService, ProductService productService) {
         this.orderService = orderService;
+        this.productService = productService;
     }
-
-    // private static final Logger logger = LoggerFactory.getLogger(WebController.class);
-
 
     @GetMapping("{id}")
     public String getOrder(Model model, @PathVariable String id) {
         Order order = orderService.get(id);
         model.addAttribute("order", order);
-        return "order";
+        return "oms/order";
     }
 
     @GetMapping("all")
@@ -44,21 +44,22 @@ public class OmsController {
         orders = orderService.getAll();
         model.addAttribute("orders", orders);
 
-        return "orders"; // orders.html
+        return "oms/orders"; // orders.html
     }
 
     @PostMapping("delete/{id}")
     public String deleteOrder(@PathVariable String id) {
         orderService.delete(id);
-        return "redirect:/ecom/admin/oms/all";
+        return "redirect:/oms/all";
     }
 
     @GetMapping("update/{id}")
     public String updateOrder(Model model, @PathVariable String id) {
         Order order = orderService.get(id);
         model.addAttribute("order", order);
+        model.addAttribute("products", productService.getAll());
 
-        return "update";
+        return "oms/update";
     }
 
     @PostMapping("update/{id}")
@@ -66,6 +67,6 @@ public class OmsController {
         
         orderService.update(order);
 
-        return "redirect:/ecom/admin/oms/all";
+        return "redirect:/oms/all";
     }
 }

@@ -1,0 +1,68 @@
+package com.kristina.ecom.security.service;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+@Configuration
+public class SecurityConfig {
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public UserDetailsService userDetailsService(PasswordEncoder encoder) {
+        List<UserDetails> users = new ArrayList<>();
+        users.add(new User(
+            "fred", encoder.encode("mypass"),
+            Arrays.asList(new SimpleGrantedAuthority("ROLE_USER")))
+        );
+        users.add(new User(
+            "kristina", encoder.encode("password"),
+            Arrays.asList(new SimpleGrantedAuthority("ROLE_ADMIN")))
+        );
+
+        return new InMemoryUserDetailsManager(users);
+    }
+    
+    // @Bean
+    // public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
+    //     return http.getSharedObject(AuthenticationManagerBuilder.class)
+    //             .build();
+    // }
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.authorizeHttpRequests((request) -> request
+                .requestMatchers("/**").hasRole("ADMIN")
+                .anyRequest().authenticated()
+            )
+            .formLogin((form) -> form.permitAll());
+            // .formLogin((form) -> form
+            //     .loginPage("/login")
+            //     .permitAll()
+            // )
+            // .logout((logout) -> logout.permitAll());
+    
+        //http.authenticationProvider(authenticationProvider());
+        //http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+
+        return http.build();
+    }
+}
+

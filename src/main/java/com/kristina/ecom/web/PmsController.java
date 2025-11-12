@@ -17,7 +17,7 @@ import com.kristina.ecom.service.ProductService;
 import org.springframework.ui.Model;
 
 @Controller
-@RequestMapping("ecom/admin")
+@RequestMapping("pms/")
 public class PmsController {
   
   private final ProductService productService;
@@ -27,55 +27,55 @@ public class PmsController {
         this.productService = productService;
     }
 
-    @GetMapping("/pms/{id}")
+    @GetMapping("{id}")
     public String getProduct(Model model, @PathVariable int id) {
         Product product = productService.get(id);
         model.addAttribute("product", product);
-        return "product";
+        return "pms/product";
     }
 
-    @GetMapping("/pms/all")
+    @GetMapping("all")
     public String getAllProducts(Model model) {
         List<Product> products = new ArrayList<>();
 
         products = productService.getAll();
         model.addAttribute("products", products);
 
-        return "products";
+        return "pms/products";
     }
 
-    @PostMapping("/pms/delete/{id}")
+    @PostMapping("delete/{id}")
     public String deleteProduct(@PathVariable int id) {
         productService.delete(id);
         return "redirect:/ecom/admin/pms/all";
     }
 
-    @GetMapping("/pms/create")
+    @GetMapping("create")
     public String showProductForm(Model model) {
         Product product = new Product();
         model.addAttribute("product", product);
 
         model.addAttribute("types", productService.getTypes());
 
-        return "create";
+        return "pms/create";
     }
 
-    @PostMapping("/pms/create")
+    @PostMapping("create")
     public String createProduct(@ModelAttribute Product product) {
         productService.create(product);
         return "redirect:/ecom/admin/pms/all";
     }
 
-    @GetMapping("/pms/update/{id}")
+    @GetMapping("update/{id}")
     public String updateProduct(Model model, @PathVariable int id) {
         Product product = productService.get(id);
         model.addAttribute("product", product);
         model.addAttribute("types", productService.getTypes());
 
-        return "update";
+        return "pms/update";
     }
 
-    @PostMapping("/pms/update/{id}")
+    @PostMapping("update/{id}")
     public String saveProduct(@ModelAttribute Product product, @PathVariable int id) {
         product.setId(id);
         productService.update(product);

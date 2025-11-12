@@ -119,6 +119,7 @@ public class OrderService {
           daoP.update(productFromStock);
           }
 
+      order.update();
       dao.update(order);
       return true;
     } catch (DAOException ex) {

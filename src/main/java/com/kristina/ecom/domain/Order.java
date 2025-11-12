@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
+
 public class Order {
   private static final int SIZE = 10000;
   private static List<Integer> ids = new Random().ints(1, SIZE+1)
@@ -15,8 +16,13 @@ public class Order {
   private String description;
   private double total;
 
-  public Order() {}
+  public Order() {
+    this.computer = new ComputerBase();
+    this.date = LocalDateTime.now();
+    this.description = "";
+  }
   
+  // Create order from computer
   public Order(Computer computer) {
     this( // chaining
       getID(),
@@ -29,8 +35,11 @@ public class Order {
     this.id = id;
     this.date = date;
     this.computer = computer;
+    this.description = computer.getDescription();
+    this.total = computer.getPrice();
   }
 
+  // Reading order from the database
   public Order(String id, LocalDateTime date, List<Product> products, String description, double total) {
     this.id = id;
     this.date = date;
@@ -57,6 +66,9 @@ public class Order {
   }
 
   public void update() {
+    ((ComputerBase)this.computer).update();
+    this.description = computer.getDescription();
+    this.total = computer.getPrice();
     this.setDate(LocalDateTime.now());
   }
 
