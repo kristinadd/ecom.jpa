@@ -17,7 +17,7 @@ import com.kristina.ecom.service.ProductService;
 import org.springframework.ui.Model;
 
 @Controller
-@RequestMapping("pms/")
+@RequestMapping("/pms/")
 public class PmsController {
   
   private final ProductService productService;
@@ -47,7 +47,7 @@ public class PmsController {
     @PostMapping("delete/{id}")
     public String deleteProduct(@PathVariable int id) {
         productService.delete(id);
-        return "redirect:/ecom/admin/pms/all";
+        return "redirect:/pms/all";
     }
 
     @GetMapping("create")
@@ -63,7 +63,7 @@ public class PmsController {
     @PostMapping("create")
     public String createProduct(@ModelAttribute Product product) {
         productService.create(product);
-        return "redirect:/ecom/admin/pms/all";
+        return "redirect:/pms/all";
     }
 
     @GetMapping("update/{id}")
@@ -80,6 +80,6 @@ public class PmsController {
         product.setId(id);
         productService.update(product);
 
-        return "redirect:/ecom/admin/pms/all";
+        return "redirect:/pms/all";
     }
 }

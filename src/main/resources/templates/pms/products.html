@@ -101,7 +101,7 @@
     <!-- Scripts -->
     <th:block th:replace="~{fragments/head :: common-scripts}"></th:block>
     
-    <script>
+    <script th:inline="javascript">
         // Delete product function
         function deleteProduct(id) {
             if (confirm('Are you sure you want to delete this product?')) {
@@ -109,6 +109,17 @@
                 const form = document.createElement('form');
                 form.method = 'POST';
                 form.action = `delete/${id}`;
+                
+                // Add CSRF token for Spring Security
+                const csrfToken = /*[[${_csrf.token}]]*/ '';
+                const csrfHeader = /*[[${_csrf.headerName}]]*/ '';
+                
+                const csrfInput = document.createElement('input');
+                csrfInput.type = 'hidden';
+                csrfInput.name = '_csrf';
+                csrfInput.value = csrfToken;
+                form.appendChild(csrfInput);
+                
                 document.body.appendChild(form);
                 form.submit();
             }
