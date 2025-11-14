@@ -1,5 +1,8 @@
 package com.kristina.ecom.dao;
 
+import com.kristina.ecom.oms.dao.OrderDAOMySql;
+import com.kristina.ecom.pms.dao.ProductDAOMySql;
+
 public class SQLFactory implements AbstractFactory {
   private static SQLFactory instance = new SQLFactory();
 

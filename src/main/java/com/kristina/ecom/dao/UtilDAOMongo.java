@@ -2,7 +2,7 @@ package com.kristina.ecom.dao;
 
 import org.bson.Document;
 
-import com.kristina.ecom.domain.Product;
+import com.kristina.ecom.pms.domain.Product;
 
 public class UtilDAOMongo {
 

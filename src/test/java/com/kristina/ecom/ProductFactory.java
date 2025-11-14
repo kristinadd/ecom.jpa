@@ -1,7 +1,8 @@
 package com.kristina.ecom;
 
-import com.kristina.ecom.domain.Product;
 import java.util.Random;
+
+import com.kristina.ecom.pms.domain.Product;
 
 /**
  * Factory class for creating Product test objects.
