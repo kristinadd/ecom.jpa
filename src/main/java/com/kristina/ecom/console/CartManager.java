@@ -5,19 +5,19 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
+import com.kristina.ecom.cart.domain.ShoppingCart;
+import com.kristina.ecom.cart.domain.Status;
+import com.kristina.ecom.cart.service.ShoppingCartService;
 import com.kristina.ecom.dao.DAOException;
-import com.kristina.ecom.domain.Computer;
-import com.kristina.ecom.domain.ComputerBase;
-import com.kristina.ecom.domain.Order;
-import com.kristina.ecom.domain.Product;
-import com.kristina.ecom.domain.ShoppingCart;
-import com.kristina.ecom.domain.SortByOrderID;
-import com.kristina.ecom.domain.SortByPrice;
-import com.kristina.ecom.domain.SortStrategy;
-import com.kristina.ecom.domain.Status;
-import com.kristina.ecom.service.OrderService;
-import com.kristina.ecom.service.ProductService;
-import com.kristina.ecom.service.ShoppingCartService;
+import com.kristina.ecom.oms.domain.Order;
+import com.kristina.ecom.oms.domain.SortByOrderID;
+import com.kristina.ecom.oms.domain.SortByPrice;
+import com.kristina.ecom.oms.domain.SortStrategy;
+import com.kristina.ecom.oms.service.OrderService;
+import com.kristina.ecom.pms.domain.Computer;
+import com.kristina.ecom.pms.domain.ComputerBase;
+import com.kristina.ecom.pms.domain.Product;
+import com.kristina.ecom.pms.service.ProductService;
 
 public class CartManager {
   private Scanner sc;

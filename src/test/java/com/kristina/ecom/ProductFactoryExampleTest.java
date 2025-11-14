@@ -1,7 +1,9 @@
 package com.kristina.ecom;
 
-import com.kristina.ecom.domain.Product;
 import org.junit.jupiter.api.Test;
+
+import com.kristina.ecom.pms.domain.Product;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**

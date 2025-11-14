@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import com.kristina.ecom.domain.Product;
+import com.kristina.ecom.pms.domain.Product;
 
 public class Test {
 

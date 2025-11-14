@@ -4,11 +4,14 @@ import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.kristina.ecom.domain.ShoppingCart;
-import com.kristina.ecom.domain.Computer;
-import com.kristina.ecom.domain.ComputerBase;
-import com.kristina.ecom.domain.Product;
-import com.kristina.ecom.domain.Status;
+import com.kristina.ecom.cart.dao.ShoppingCartDAOMongo;
+import com.kristina.ecom.cart.domain.ShoppingCart;
+import com.kristina.ecom.cart.domain.Status;
+import com.kristina.ecom.oms.dao.OrderDAOMongo;
+import com.kristina.ecom.pms.dao.ProductDAOMongo;
+import com.kristina.ecom.pms.domain.Computer;
+import com.kristina.ecom.pms.domain.ComputerBase;
+import com.kristina.ecom.pms.domain.Product;
 public class Main {
   public static void main(String[] args) {
     OrderDAOMongo orderDao = new OrderDAOMongo();
