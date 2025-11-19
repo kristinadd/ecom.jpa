@@ -4,3 +4,6 @@ public interface AbstractFactory<K,V> {
 
   public DAO<K, V> create(DAO.Type dao);
 }
+
+// idea:
+// abstract class AbstractFactory {}
